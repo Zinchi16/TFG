@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Librería Virtual | Mi Cuenta</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/scripts.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="brand">
+      <h1>Librería Virtual</h1>
+    </div>
+    <div class="toolbar" role="group" aria-label="Herramientas">
+      <span class="cart-pill" aria-live="polite" aria-atomic="true" title="Carrito">
+        🛒 <span id="cartCount" class="cart-count">0</span>
+      </span>
+      <button id="toggleTheme" class="toggle" aria-pressed="false" title="Cambiar tema">
+        🌙 <span>Modo oscuro</span>
+      </button>
+      <nav aria-label="Navegación principal">
+        <a href="../html/index.html">Catálogo</a>
+        <a href="../html/carrito.html">Carrito</a>
+        <a href="../html/cuenta.html" aria-current="page">Mi Cuenta</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="pageAccount">
+    <h2>Mi Cuenta</h2>
+    <form id="accountForm" class="card">
+      <div class="grid-2">
+        <div>
+          <label for="name">Nombre</label>
+          <input id="name" type="text" placeholder="Tu nombre">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="tucorreo@ejemplo.com">
+        </div>
+      </div>
+      <div>
+        <label for="address">Dirección</label>
+        <input id="address" type="text" placeholder="Calle, número, ciudad">
+      </div>
+      <div class="summary-actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="button" id="btnClearProfile" class="btn btn-danger">Borrar datos</button>
+      </div>
+      <p class="muted">Los datos se guardan localmente en tu navegador (localStorage) solo para esta demo.</p>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Librería Virtual - Proyecto TFG - Aaron, Bruno y Lucas</p>
+  </footer>
+</body>
+
+</html>
