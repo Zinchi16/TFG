@@ -1,15 +1,39 @@
+// ==========================================
+// ARRANQUE PRINCIPAL DE LA WEB
+// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
-  actualizarContadorCarrito(); // Se ejecuta en todas las páginas
+  actualizarContadorCarrito();
+  gestionarEstadoSesion(); // Comprueba si hay alguien logueado
 
-  // Detectar en qué página estamos para ejecutar su lógica específica
+  // Detectar en qué página estamos para arrancar su "motor" específico
   if (document.getElementById("pageCatalog")) {
-    initCatalogPage();
+    initCatalogPage(); // Esto es lo que pinta los libros
   } else if (document.getElementById("pageCart")) {
-    initCartPage();
+    initCartPage(); // Esto pinta el carrito
+  } else if (document.getElementById("pageAccount")) {
+    initAccountPage(); // Esto arranca el login/registro
   }
 });
 
+function gestionarEstadoSesion() {
+  // 1. Intentamos buscar por ID (linkCuenta)
+  let linkCuenta = document.getElementById("linkCuenta");
+
+  // 2. PLAN B: Si no lo encuentra, busca cualquier enlace que contenga "cuenta.html"
+  if (!linkCuenta) {
+    linkCuenta = document.querySelector('a[href*="cuenta.html"]');
+  }
+
+  const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+  if (usuario && linkCuenta) {
+    // Si el usuario existe, transformamos el botón
+    linkCuenta.textContent = "Cerrar sesión";
+    linkCuenta.href = "#"; // Rompemos el enlace normal
+    linkCuenta.onclick = cerrarSesion; // Le damos el poder de borrar todo
+  }
+}
 // ==========================================
 // 1. LÓGICA DEL CATÁLOGO Y FILTROS
 // ==========================================
@@ -146,7 +170,6 @@ async function actualizarContadorCarrito() {
 // Lógica para la página carrito.html
 async function initCartPage() {
   try {
-    // TRUCO: Añadimos un número aleatorio al final de la URL para que el navegador NUNCA use la caché antigua
     const cacheBuster = new Date().getTime();
     const response = await fetch(`http://127.0.0.1:5000/api/carrito?t=${cacheBuster}`);
     const data = await response.json();
@@ -192,6 +215,24 @@ async function initCartPage() {
           await fetch('http://127.0.0.1:5000/api/carrito/clear', { method: 'POST' });
           initCartPage();
           actualizarContadorCarrito();
+        }
+      };
+    }
+
+    // --- EL PORTERO: Lógica del botón Finalizar Compra ---
+    const btnFinalizarCompra = document.getElementById("btnFinalizarCompra");
+    if (btnFinalizarCompra) {
+      btnFinalizarCompra.onclick = (e) => {
+        const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+        if (!usuario) {
+          // No hay sesión: bloqueamos el botón y mandamos al login
+          e.preventDefault();
+          alert("¡Alto ahí! Para poder finalizar tu compra, primero debes iniciar sesión.");
+          window.location.href = "cuenta.html";
+        } else {
+          // Sí hay sesión: dejamos pasar
+          alert(`¡Gracias por tu pedido, ${usuario.nombre}! Procesando compra...`);
         }
       };
     }
@@ -274,6 +315,9 @@ function initAccountPage() {
         const data = await response.json();
 
         if (response.ok) {
+          // GUARDAMOS AL USUARIO EN EL NAVEGADOR
+          // Dentro de la función de login, cuando la respuesta es OK:
+          localStorage.setItem("usuario", JSON.stringify({ nombre: data.nombre }));
           alert("¡Bienvenido " + data.email + "!");
           window.location.href = "index.html"; // Redirige al catálogo
         } else {
@@ -318,5 +362,26 @@ function initAccountPage() {
         msgBox.hidden = false;
       }
     });
+  }
+}
+async function cerrarSesion(e) {
+  if (e) e.preventDefault();
+
+  if (confirm("¿Quieres cerrar tu sesión? Se vaciará tu carrito.")) {
+    try {
+      // 1. Vaciamos el carrito en el servidor Python
+      await fetch('http://127.0.0.1:5000/api/carrito/clear', { method: 'POST' });
+
+      // 2. Borramos los datos del usuario en el navegador
+      localStorage.removeItem("usuario");
+
+      // 3. Limpiar datos locales del carrito si tuvieras
+      alert("Sesión cerrada y carrito vaciado.");
+
+      // 4. Redirigimos al catálogo para refrescar la interfaz
+      window.location.href = "index.html";
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
   }
 }
