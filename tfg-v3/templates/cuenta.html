@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Librería Virtual | Acceso</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <script src="../static/js/scripts.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="brand">
+      <h1>Librería Virtual</h1>
+    </div>
+    <div class="toolbar" role="group" aria-label="Herramientas">
+      <span class="cart-pill" aria-live="polite" aria-atomic="true" title="Carrito">
+        carrito <span id="cartCount" class="cart-count">0</span>
+      </span>
+
+      <button id="toggleTheme" class="toggle" aria-pressed="false" title="Cambiar tema">
+        <span>Modo oscuro</span>
+      </button>
+
+      <nav aria-label="Navegación principal">
+        <a href="index.html">Catálogo</a>
+        <a href="carrito.html">Carrito</a>
+        <a href="cuenta.html" id="linkCuenta">Mi Cuenta</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="pageAccount">
+
+    <section id="loginSection" class="card" style="max-width: 400px; margin: 0 auto;">
+      <h2 style="margin-top: 0;">Iniciar sesión</h2>
+      <div id="loginError" style="color: var(--danger); margin-bottom: 10px;" hidden></div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="loginEmail">Email</label>
+        <input id="loginEmail" type="email" placeholder="tucorreo@ejemplo.com" style="width: 100%; padding: 10px;">
+      </div>
+      <div style="margin-bottom: 15px;">
+        <label for="loginPassword">Contraseña</label>
+        <input id="loginPassword" type="password" style="width: 100%; padding: 10px;">
+      </div>
+
+      <button id="btnLogin" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">Entrar</button>
+      <p style="text-align: center; font-size: 0.9rem;">
+        ¿No tienes cuenta? <a href="#" id="linkToRegister" class="link">Regístrate aquí</a>
+      </p>
+    </section>
+
+    <section id="registerSection" class="card" style="max-width: 400px; margin: 0 auto;" hidden>
+      <h2 style="margin-top: 0;">Crear cuenta nueva</h2>
+      <div id="registerMsg" style="margin-bottom: 10px;" hidden></div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="regNombre">Nombre</label>
+        <input id="regNombre" type="text" placeholder="Tu nombre" style="width: 100%; padding: 10px;">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="regEmail">Email</label>
+        <input id="regEmail" type="email" placeholder="tucorreo@ejemplo.com" style="width: 100%; padding: 10px;">
+      </div>
+      <div style="margin-bottom: 15px;">
+        <label for="regPassword">Contraseña</label>
+        <input id="regPassword" type="password" style="width: 100%; padding: 10px;">
+      </div>
+
+      <button id="btnRegister" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">Registrarse</button>
+      <p style="text-align: center; font-size: 0.9rem;">
+        ¿Ya tienes cuenta? <a href="#" id="linkToLogin" class="link">Vuelve al login</a>
+      </p>
+    </section>
+    <div id="adminToggleContainer" style="text-align: center; margin-top: 30px;">
+      <button id="btnShowAdminLogin" class="btn">¿Eres Administrador?</button>
+    </div>
+
+    <section id="adminLoginSection" class="card" style="max-width: 400px; margin: 0 auto;" hidden>
+      <h2 style="margin-top: 0; color: var(--focus);">Acceso Administrador</h2>
+      <div id="adminLoginError" style="color: var(--danger); margin-bottom: 10px;" hidden></div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="adminEmail">Email</label>
+        <input id="adminEmail" type="email" placeholder="admin@ejemplo.com" style="width: 100%; padding: 10px;">
+      </div>
+      <div style="margin-bottom: 15px;">
+        <label for="adminPassword">Contraseña</label>
+        <input id="adminPassword" type="password" style="width: 100%; padding: 10px;">
+      </div>
+      <div style="margin-bottom: 15px;">
+        <label for="adminSecret">Clave Especial</label>
+        <input id="adminSecret" type="password" placeholder="Clave de administrador"
+          style="width: 100%; padding: 10px;">
+      </div>
+
+      <button id="btnAdminLogin" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">Entrar como
+        Admin</button>
+      <p style="text-align: center; font-size: 0.9rem;">
+        <a href="#" id="linkToNormalLogin" class="link">Volver al login normal</a>
+      </p>
+    </section>
+  </main>
+</body>
+
+</html>
