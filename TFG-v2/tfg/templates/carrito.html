@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Librería Virtual | Carrito</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="static/css/styles.css">
+  <script src="../js/scripts.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="brand">
+      <h1>Librería Virtual</h1>
+    </div>
+    <div class="toolbar" role="group" aria-label="Herramientas">
+      <span class="cart-pill" aria-live="polite" aria-atomic="true" title="Carrito">
+        carrito <span id="cartCount" class="cart-count">0</span>
+      </span>
+
+      <button id="toggleTheme" class="toggle" aria-pressed="false" title="Cambiar tema">
+        <span>Modo oscuro</span>
+      </button>
+
+      <nav aria-label="Navegación principal">
+        <a href="../html/index.html">Catálogo</a>
+        <a href="../html/carrito.html">Carrito</a>
+        <a href="../html/cuenta.html" id="linkCuenta">Mi Cuenta</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="pageCart">
+    <h2>Tu carrito</h2>
+
+    <div id="cartEmpty" class="empty" hidden>
+      Tu carrito está vacío. <a class="link" href="../html/index.html">Ir al catálogo</a>
+    </div>
+
+    <div id="cartList" class="cart-list"></div>
+
+    <div id="cartSummary" class="cart-summary" hidden>
+      <div class="summary-line">
+        <span>Total</span>
+        <strong id="cartTotal">0,00 €</strong>
+      </div>
+      <div class="summary-actions">
+        <a class="btn" href="../html/index.html">Seguir comprando</a>
+        <button id="btnClearCart" class="btn btn-danger">Vaciar carrito</button>
+        <button id="btnFinalizarCompra" class="btn btn-primary">Finalizar compra</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Librería Virtual - Proyecto TFG - Aaron, Bruno y Lucas</p>
+  </footer>
+</body>
+
+</html>
+``
+``
