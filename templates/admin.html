@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+</head>
+<body>
+    <header><h1>Panel de Control</h1></header>
+    <main class="container" id="pageAdmin">
+        <section class="card">
+            <h3>Añadir Libro</h3>
+            <form id="formAñadirLibro">
+                <input id="adminTitulo" type="text" placeholder="Título" required>
+                <input id="adminAutor" type="text" placeholder="Autor" required>
+                <textarea id="adminDesc" placeholder="Descripción"></textarea>
+                <input id="adminPrecio" type="number" step="0.01" placeholder="Precio" required>
+                <select id="adminCat">
+                    <option value="Programación">Programación</option>
+                    <option value="Novela">Novela</option>
+                    <option value="Divulgación Científica">Divulgación Científica</option>
+                    <option value="Diseño">Diseño</option>
+                    <option value="Biografía">Biografía</option>
+                    <option value="Ensayo">Ensayo</option>
+                    <option value="Finanzas">Finanzas</option>
+                    <option value="Historia">Historia</option>
+                    <option value="Cocina">Cocina</option>
+                </select>
+                <input id="adminImg" type="text" placeholder="URL Imagen">
+                <button type="submit" class="btn">Guardar</button>
+            </form>
+        </section>
+        <section class="card">
+            <h3>Gestión de Catálogo</h3>
+            <div id="listaLibrosAdmin"></div>
+        </section>
+    </main>
+    <div id="toastContainer"></div>
+</body>
+</html>

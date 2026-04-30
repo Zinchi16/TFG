@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Perfil | Librería Virtual</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+</head>
+<body id="pageAccount"> <!-- Este ID activa initAccountPage() en scripts.js -->
+    <header>
+        <div class="brand"><h1>Librería Virtual</h1></div>
+        <nav>
+            <a href="/">Catálogo</a>
+            <a href="/carrito">Carrito (<span id="cartCount">0</span>)</a>
+            <a href="/cuenta">Mi Cuenta</a>
+        </nav>
+    </header>
+
+    <main class="container card" style="margin-top: 30px;">
+        <h2>Mi Cuenta</h2>
+        <div id="userData">
+            <p><strong>Nombre:</strong> <span id="userName">Cargando...</span></p>
+            <p><strong>Rol:</strong> <span id="userRole">Cargando...</span></p>
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--border);">
+            <button onclick="cerrarSesion()" class="btn btn-danger">Cerrar Sesión</button>
+        </div>
+    </main>
+    <div id="toastContainer"></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Carrito | Librería Virtual</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+</head>
+
+<body id="pageCart">
+    <header>
+        <div class="brand">
+            <h1>Librería Virtual</h1>
+        </div>
+        <nav>
+            <a href="/">Catálogo</a>
+            <a href="/carrito">Carrito (<span id="cartCount">0</span>)</a>
+            <a href="/cuenta">Mi Cuenta</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="card" style="border: none; background: transparent; box-shadow: none;">
+            <h2>Mi Selección</h2>
+            <p class="muted">Ajusta las cantidades antes de finalizar tu pedido.</p>
+
+            <div id="cartList" class="cart-list">
+                <!-- Se rellena con scripts.js usando la clase .cart-item -->
+            </div>
+
+            <div class="cart-summary" style="margin-top: 30px;">
+                <div class="summary-line">
+                    <span style="font-size: 1.2rem;">Total de la compra:</span>
+                    <strong id="cartTotal" style="font-size: 1.8rem; color: var(--success);">0.00 €</strong>
+                </div>
+                <div style="display: flex; gap: 15px; justify-content: flex-end; margin-top: 20px;">
+                    <a href="/" class="btn">Seguir comprando</a>
+                    <!-- En carrito.html -->
+                    <button id="btnPagar" class="btn btn-primary" style="padding: 12px 30px;" onclick="iniciarPago()">
+                        Pagar ahora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="toastContainer"></div>
+</body>
+
+</html>

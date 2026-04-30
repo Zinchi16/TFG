@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro | Librería Virtual</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="brand"><h1>Librería Virtual</h1></div>
+        <nav>
+            <a href="/">Catálogo</a>
+            <a href="/login">Entrar</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="card" style="max-width: 400px; margin: 50px auto;">
+            <h2>Crear Cuenta</h2>
+            <!-- Corregido: action apunta a /registro en lugar de /api-register -->
+            <form action="/registro" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                <div>
+                    <label>Nombre completo</label>
+                    <input type="text" name="nombre" required style="width: 100%;">
+                </div>
+                <div>
+                    <label>Correo electrónico</label>
+                    <input type="email" name="email" required style="width: 100%;">
+                </div>
+                <div>
+                    <label>Contraseña</label>
+                    <input type="password" name="password" required style="width: 100%;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="background-color: var(--success);">Registrarme</button>
+            </form>
+        </section>
+    </main>
+    <div id="toastContainer"></div>
+</body>
+</html>

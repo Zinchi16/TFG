@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+    <div style="max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
+        <h2 style="color: #28a745;">¡Gracias por tu compra!</h2>
+        <p>Hola <strong>{{ nombre }}</strong>, hemos recibido tu pedido correctamente.</p>
+        
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <thead>
+                <tr style="background-color: #f8f9fa;">
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Libro</th>
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: center;">Cant.</th>
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: right;">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">{{ item.titulo }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">{{ item.cantidad }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">{{ item.precio }} €</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="text-align: right; font-size: 1.2rem;">
+            <strong>Total pagado: {{ total }} €</strong>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 0.9rem; color: #666;">
+            Recibirás un nuevo correo cuando tu pedido sea enviado.
+        </p>
+    </div>
+</body>
+</html>

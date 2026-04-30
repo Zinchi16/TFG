@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Librería Virtual | Inicio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <h1>Librería Virtual</h1>
+        </div>
+        <nav>
+            <a href="/">Catálogo</a>
+            <a href="/carrito">Carrito (<span id="cartCount">0</span>)</a>
+            <a href="/cuenta" id="linkCuenta">Mi Cuenta</a>
+        </nav>
+    </header>
+
+    <main class="container" id="pageCatalog">
+        <section class="filters" role="search">
+            <label class="sr-only" for="q">Buscar</label>
+            <input id="q" type="text" placeholder="Buscar por nombre o autor…" aria-label="Buscar">
+
+            <label class="sr-only" for="category">Categoría</label>
+            <select id="category" aria-label="Filtrar por categoría">
+                <option value="">Todas las categorías</option>
+                <option>Programación</option>
+                <option>Novela</option>
+                <option>Bienestar</option>
+                <option>Divulgación Científica</option>
+                <option>Diseño</option>
+                <option>Biografía</option>
+                <option>Ensayo</option>
+                <option>Finanzas</option>
+                <option>Historia</option>
+                <option>Cocina</option>
+            </select>
+
+            <label class="sr-only" for="sort">Ordenar</label>
+            <select id="sort" aria-label="Ordenar resultados">
+                <option value="">Orden recomendado</option>
+                <option value="price-asc">Precio: menor a mayor</option>
+                <option value="price-desc">Precio: mayor a menor</option>
+            </select>
+
+            <button id="btnClear" title="Limpiar filtros">Limpiar</button>
+        </section>
+        <section id="catalogo" class="catalog"></section>
+
+    </main>
+
+    <template id="cardTemplate">
+        <article class="book-card">
+            <img data-img src="" alt="Portada">
+            <div class="book-info">
+                <h3 data-title></h3>
+                <p data-author></p>
+                <span data-category class="category-tag"></span>
+                <p data-price class="price"></p>
+                <button class="btn">Añadir al carrito</button>
+            </div>
+        </article>
+    </template>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Compra | Librería Virtual</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="brand"><h1>Librería Virtual</h1></div>
+        <nav>
+            <a href="/">Catálogo</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="card" style="text-align: center; max-width: 600px; margin: 60px auto; padding: 40px;">
+            
+            <div style="font-size: 3rem; margin-bottom: 20px;">✅</div>
+            
+            <h2 style="color: var(--success);">¡Pago completado con éxito!</h2>
+            
+            <p>Gracias por tu confianza. Tu pedido ha sido procesado correctamente a través de la pasarela segura.</p>
+            
+            <div style="margin: 25px 0; padding: 15px; background: var(--bg); border-radius: 8px; border: 1px dashed var(--border);">
+                <span class="muted">ID de transacción:</span>
+                <strong style="font-family: monospace; display: block; margin-top: 5px;">
+                    STR-TEST-{{ range(100000, 999999) | random }}
+                </strong>
+            </div>
+
+            <p class="muted">Recibirás un correo electrónico con el resumen de tu compra y los detalles del envío en unos minutos.</p>
+
+            <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center;">
+                <a href="/" class="btn btn-primary">Volver al catálogo</a>
+                <a href="/cuenta" class="btn">Ir a mi cuenta</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Librería Virtual - Entorno de Pruebas</p>
+    </footer>
+
+    <script>
+        // Limpiamos el contador visual del carrito ya que la compra se efectuó
+        const badge = document.getElementById("cartCount");
+        if (badge) badge.textContent = "0";
+        console.log("Pago de prueba finalizado satisfactoriamente.");
+    </script>
+</body>
+</html>

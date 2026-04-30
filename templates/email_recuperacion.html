@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding: 40px 0;">
+        <tr>
+            <td>
+                <!-- Contenedor Principal -->
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="550" style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden;">
+                    
+                    <!-- Encabezado con Logo Simulado -->
+                    <tr>
+                        <td align="center" style="padding: 30px 0; background-color: #2c3e50;">
+                            <h1 style="color: #ffffff; margin: 0; font-size: 24px; letter-spacing: 1px;">LIBRERÍA VIRTUAL</h1>
+                        </td>
+                    </tr>
+
+                    <!-- Cuerpo del Mensaje -->
+                    <tr>
+                        <td style="padding: 40px 30px;">
+                            <h2 style="color: #333333; margin-top: 0;">Hola, {{ nombre }}</h2>
+                            <p style="color: #555555; font-size: 16px; line-height: 1.5;">
+                                Hemos recibido una solicitud para restablecer la contraseña de tu cuenta asociada a este correo electrónico.
+                            </p>
+                            
+                            <!-- Información de Seguridad -->
+                            <div style="background-color: #fff4e5; border-left: 4px solid #ff9800; padding: 15px; margin: 25px 0;">
+                                <p style="margin: 0; color: #856404; font-size: 14px;">
+                                    <strong>Nota de seguridad:</strong> Este enlace caducará en 24 horas y solo puede ser utilizado una vez.
+                                </p>
+                            </div>
+
+                            <!-- Botón de Acción -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 35px 0;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="{{ enlace }}" style="background-color: #3498db; color: #ffffff; padding: 15px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; transition: background-color 0.3s;">
+                                            Restablecer mi contraseña
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="color: #777777; font-size: 14px;">
+                                Si el botón de arriba no funciona, puedes copiar y pegar el siguiente enlace en tu navegador:
+                            </p>
+                            <p style="color: #3498db; font-size: 13px; word-break: break-all;">
+                                {{ enlace }}
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Pie de página -->
+                    <tr>
+                        <td style="padding: 20px 30px; background-color: #f8f9fa; border-top: 1px solid #eeeeee; text-align: center;">
+                            <p style="margin: 0; color: #999999; font-size: 12px;">
+                                Si no has solicitado este cambio, puedes ignorar este correo de forma segura. Tu contraseña actual no se verá afectada.
+                            </p>
+                            <p style="margin: 10px 0 0 0; color: #999999; font-size: 12px; font-weight: bold;">
+                                &copy; 2026 Librería Virtual - Proyecto TFG
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
